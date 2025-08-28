@@ -6,23 +6,23 @@
 using namespace std;
 
 vector<int> positions(vector<int>& numbers, int target ){
-    int beginning = 0;
-    int end = numbers.size() - 1;
+    int beginning = 0; //set a pointer at the beginning
+    int end = numbers.size() - 1;//set a pointer at the end
 
-    while (beginning < end) {
+    while (beginning < end) {//they shouldnt cross but if they do
         int sum = numbers[beginning] + numbers[end];
 
         if (sum == target) {
-            return { beginning + 1, end + 1 };
+            return { beginning + 1, end + 1 };//add 1 for the 1 index asked for
         }
-        else if(sum < target){
+        else if(sum < target){ //if the sum is too small move the beginning pointer over one (because the list is sorted) to make sum larger 
             beginning++;
         }
         else {
-            end--;
+            end--;//if the sum is too big this moves the pointer on the end to the left to make sum smaller. (because the list is sorted)
         }
     }
-    return{ 0,0 };
+    return{ 0,0 };//just in case it should return [o,o] because there is no answer
 }
 
 
